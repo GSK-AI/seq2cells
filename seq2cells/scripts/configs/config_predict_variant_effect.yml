@@ -1,0 +1,56 @@
+debug: True
+saving:
+  output_path: "./vep_out"
+  save_matched_variants: True
+  save_matched_variants_file: 'matched_variants.tsv'
+  save_filtered_variants: True
+  save_filtered_variants_file: 'filtered_variants.tsv'
+  save_ref_pred_file: 'pred_ref.npy'
+  save_var_pred_file: 'pred_var.npy'
+resource:
+  profile: False
+  # variant effect prediction invokes the Enformer trunk so is very slow on a
+  # CPU only device
+  device: "cpu"
+  # if set to None will use the entire length of the (subset) anndata object
+  pred_batch_size: 1
+  # if to write predictions per batch to disk (True) or
+  # (False) perform all in memory
+  temp_write_pred: False
+task:
+  # if to merge adjacent bins/embeddings to the bin/enformer embedding
+  # extracted use 0 or 1
+  merge_adjacent_bins: 0
+  input:
+    # run in strict mode (true) will fail the run when the reference provided
+    # by the variant does not match the reference base at the provided position.
+    strict_mode: False
+    # False - treat every variant as plus strand, True - apply variant to the
+    # strand specified in the matching sequence query
+    strand_specific_mode: False
+data:
+  variants:
+    variant_file: "./tests/resources/sequence_data/example_variants.tsv"
+    # supported format
+    # 'tsv' - 5 columns:
+    #    "var_id", "var_chr", "var_pos", "var_ref", "var_alt", "linked_gene_id"
+    variant_file_format: 'tsv'
+    # if variant coordinates are in 0 or 1 based format
+    var_pos_base: 1
+    # toggle if to strip the gene ID of everything apast and including the
+    # dot ->  (\.\d+)
+    strip_id: True
+  sequence:
+    # tsv file containing the regions of interest and associated sequence
+    # windows to query as produced by create_seq_window_queries.py
+    seq_window_query: './tests/resources/sequence_data/query_tss_example.tsv'
+    # if query files are in 0 or 1 based format
+    seq_pos_base: 1
+    seq_context_length: 196608
+    reference_genome: "path_to/hg38.fa"
+model:
+  head:
+    model_head_chkpt_path: "./checkpoint.ckpt"
+  trunk:
+    # Enformer checkpoint
+    model_trunk_chkpt_path: 'EleutherAI/enformer-official-rough'

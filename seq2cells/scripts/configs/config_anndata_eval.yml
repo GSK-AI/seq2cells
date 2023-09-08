@@ -1,0 +1,52 @@
+debug: True
+profile: False
+data:
+  output_path: './eval_pbmc_toy'
+  # seq2cells model checkpoint
+  model_chkpt_path: "./checkpoint.ckpt"
+  # anndata object hosting the observations and precomputed embeddings
+  # Requires embeddings stored in the .varm key 'seq_embedding'
+  ann_data_file: "./tests/resources/single_cell_data/pbmc_toy_example.h5ad"
+  # column (obs.) name indicating the training test and validation split
+  split_name: 'enf_set'
+  # which layer of the anndata object layers to use as observed counts
+  # usually this should be a normalised counts layer e.g. 'pflog1ppf'
+  # use 'X' to indicate to use whatever is stored as X in the adata object
+  observed_counts_layer: 'X'
+  # <predictions_layer> does not need to be present if running the predictions.
+  # In that case it will be used as layer name to store the predicted counts in
+  # the new data frame. If Running only the correlation computation this is
+  # the layer in which the predicted counts are expected
+  predictions_layer: 'predicted'
+  save_predictions: True
+  # full path where to store AnnData with predictions
+  save_anndata_path: "./pbmc_toy_example_with_predictions.h5ad"
+task:
+  run_pred: True
+  # if running not on 'all' than will save a subset of the anndata object
+  # with genes corresponding to the chosen set
+  pred_on: 'all'
+  # if predictions under are found in the provided anndata object under the
+  # specified 'predictions_layer' should they be overwritten?
+  overwrite_pred: True
+  run_eval: True
+  eval_on: 'all'
+  # optional set <subset_genes_column> to a anndata.obs column (0 and 1) that
+  # should be used to subset the observations (genes)
+  subset_genes_column: None
+  eval_highly_variable: True
+  eval_highly_expressed: True
+resource:
+  device: "cpu"
+  # if <pred_batch_size> set to 0 will use
+  # the entire length of the (subset) anndata object
+  pred_batch_size: 10
+  # if to write predictions per batch to disk (True) or
+  # (False) perform all in memory
+  temp_write_pred: True
+  # read anndata in backed mode?
+  backed_mode: False
+  # is running on a subset of data in backed mode (e.g. validation only) this
+  # will require to write a temporary h5ad file that will be deleted after
+  # running
+  backed_mode_temp_h5ad: ""
