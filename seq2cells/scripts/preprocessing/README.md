@@ -308,7 +308,7 @@ chr16   24529786        24644474        test
 chr8    18655640        18770328        test
 ```
 
-Using [`intersect_queries_with_enformer_regions.py`](seq2cells/scripts/preprocessing/intersect_queries_with_enformer_regions.py)
+Using `intersect_queries_with_enformer_regions.py`
 
 Run as
 
