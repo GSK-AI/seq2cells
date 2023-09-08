@@ -250,7 +250,7 @@ Using [`fine_tune_on_anndata.py`](seq2cells/scripts/training/fine_tune_on_anndat
 Adapt [`config_anndata_fine_tune.yml`](seq2cells/scripts/configs/config_anndata_fine_tune.yml)
 .
 Or use the provided configuration for training a model on the
-[`toy pbmc dataset`](tests/resources/single_cell_data/pbmc_toy_example.h5ad)
+[`toy pbmc dataset`](tests/resources/single_cell_data/)
 only adjust the output directory, the path to the toy single cell data and
 to your copy of the hg38 reference genome.
 
@@ -278,7 +278,7 @@ can be used to skip the prediction step.
 
 Adapt [`config_anndata_eval.yml`](seq2cells/scripts/configs/config_anndata_eval.yml)
 or use the provided configuration for evaluating on the
-[`toy pbmc dataset`](tests/resources/single_cell_data/pbmc_toy_example.h5ad).
+[`toy pbmc dataset`](tests/resources/single_cell_data/).
 
 ```
 python eval_single_cell_model.py config_file=config_anndata_eval.yml
@@ -291,7 +291,7 @@ Note: Inference is only supported on a single device.
 Adapt [`config_predict_variant_effect.yml`](./seq2cells/scripts/configs/config_predict_variant_effect.yml)
 or use the provided configuration for predicting 3 example variants with a
 model trained against the
-[`toy pbmc dataset`](tests/resources/single_cell_data/pbmc_toy_example.h5ad)
+[`toy pbmc dataset`](tests/resources/single_cell_data/)
 .
 Note, this requires to run an example training run first.
 Alternatively, adjust the config to use one of the trained models provided
