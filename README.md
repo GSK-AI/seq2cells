@@ -291,7 +291,7 @@ Note: Inference is only supported on a single device.
 Adapt [`config_predict_variant_effect.yml`](./seq2cells/scripts/configs/config_predict_variant_effect.yml)
 or use the provided configuration for predicting 3 example variants with a
 model trained against the
-[`toy pbmc dataset`](`./tests/resources/single_cell_data/pbmc_toy_example.h5ad`)
+[`toy pbmc dataset`](`tests/resources/single_cell_data/pbmc_toy_example.h5ad`)
 .
 Note, this requires to run an example training run first.
 Alternatively, adjust the config to use one of the trained models provided
