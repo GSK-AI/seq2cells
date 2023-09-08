@@ -250,7 +250,7 @@ Using [`fine_tune_on_anndata.py`](seq2cells/scripts/training/fine_tune_on_anndat
 Adapt [`config_anndata_fine_tune.yml`](seq2cells/scripts/configs/config_anndata_fine_tune.yml)
 .
 Or use the provided configuration for training a model on the
-[`toy pbmc dataset`](`seq2cells/tests/resources/single_cell_data/pbmc_toy_example.h5ad`)
+[`toy pbmc dataset`](`tests/resources/single_cell_data/pbmc_toy_example.h5ad`)
 only adjust the output directory, the path to the toy single cell data and
 to your copy of the hg38 reference genome.
 
