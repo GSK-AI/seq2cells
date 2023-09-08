@@ -122,7 +122,7 @@ sh repro_vep.sh <checkpoint.ckpt> <hg38.fa>
 * To run the preprocessing and variant effect prediction you need the reference 
   genome (hg38) as fasta file (.fa) and index (.fa.fai) in same directory.
   Download hg38 from e.g.
-  [USCC](https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/).
+  [UCSC](https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/).
   Index with e.g. [samtools](http://www.htslib.org/doc/samtools-faidx.html)
   samtools-faidx
 
